@@ -1,33 +1,55 @@
-import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
+import { ApolloClient, InMemoryCache, createHttpLink, ApolloLink, ApolloProvider } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { useAuth0 } from '@auth0/auth0-react';
+import { useAuth0 } from "@auth0/auth0-react";
 
-const httpLink = createHttpLink({
-  uri: "http://localhost:25080/v1/graphql", // Your Hasura instance
-});
+export const ApolloProviderWithAuth0 = ({ children }) => {
+  const { isLoading, getIdTokenClaims } = useAuth0();
 
-const authLink = setContext((_, { headers }) => {
-  const { getAccessTokenSilently } = useAuth0();
-
-  async function fetchSession() {
-    const token = await getAccessTokenSilently();
-    return token;
-  }
-  const authLinkWithHeader = fetchSession().then((token) => {
-    return {
-      headers: {
-        ...headers,
-        authorization: token ? `Bearer ${token}` : "",
-      },
-    };
+  const httpLink = createHttpLink({
+    uri: "http://localhost:25080/v1/graphql", // Your Hasura instance
   });
 
-  return authLinkWithHeader;
-});
+  // Create the authentication middleware
+  const authMiddleware = setContext(async (_, { headers }) => {
+    if (isLoading) {
+      return { headers }; 
+    }
 
-const client = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
-});
+    try {
+      const tokenClaims = await getIdTokenClaims();
+      const token = tokenClaims?.__raw;
+    
+      console.log(token);
+    
+      // Check if the token is defined
+      if (token) {
+        return {
+          headers: {
+            ...headers,
+            authorization: `Bearer ${token}`,
+          },
+        };
+      } else {
+        // If the token is not defined, return the headers without the authorization header and they will be assumed as Public.
+        return { headers };
+      }
+    } catch (error) {
+      console.error("Authentication error", error);
+      return { headers };
+    }
+  });
 
-export default client;
+  // Combine the authentication middleware with the HTTP link
+  const link = ApolloLink.from([authMiddleware, httpLink]);
+
+  const client = new ApolloClient({
+    link: link,
+    cache: new InMemoryCache(),
+  });
+
+  return (
+    <ApolloProvider client={client}>
+      {children}
+    </ApolloProvider>
+  );
+};
