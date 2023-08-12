@@ -1,3 +1,7 @@
+// This file ensures that a user is authenticated before accessing protected pages,
+// and if a role is provided, check that the user has that role before continuing,
+// else send them to /unauthorized.
+
 import React from "react";
 import { withAuthenticationRequired, useAuth0 } from "@auth0/auth0-react";
 import { PageLoader } from "../pageLoader";
