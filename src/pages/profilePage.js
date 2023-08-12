@@ -1,6 +1,6 @@
 import React from "react";
-import { CodeSnippet } from "../components/code-snippet";
-import { PageLayout } from "../components/page-layout";
+import { CodeSnippet } from "../components/codeSnippet";
+import { PageLayout } from "../components/pageLayout";
 import { useQuery, gql } from "@apollo/client";
 import { useAuth0 } from '@auth0/auth0-react';
 

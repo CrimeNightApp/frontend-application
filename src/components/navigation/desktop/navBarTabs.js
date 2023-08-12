@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
-import { NavBarTab } from "./nav-bar-tab";
-import { useHasRole } from "../../auth/useHasRole";
+import { NavBarTab } from "./navBarTab";
+import { useHasRole } from "../../auth/userHasRole";
 
 export const NavBarTabs = () => {
   const { isAuthenticated } = useAuth0();

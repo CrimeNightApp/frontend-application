@@ -1,5 +1,5 @@
 import React from "react";
-import { Auth0Feature } from "./auth0-feature";
+import { Auth0Feature } from "./auth0Feature";
 import { useQuery, gql } from "@apollo/client";
 
 const VIDEOS_QUERY = gql`

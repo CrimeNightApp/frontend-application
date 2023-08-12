@@ -1,5 +1,5 @@
-import { CodeSnippet } from "../components/code-snippet";
-import { PageLayout } from "../components/page-layout";
+import { CodeSnippet } from "../components/codeSnippet";
+import { PageLayout } from "../components/pageLayout";
 
 export const AdminPage = () => {
 

@@ -1,13 +1,14 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { PageLoader } from "./components/page-loader";
-import { AuthenticationGuard } from "./components/auth/authentication-guard";
-import { AdminPage } from "./pages/admin-page";
-import { CallbackPage } from "./pages/callback-page";
-import { HomePage } from "./pages/home-page";
-import { NotFoundPage } from "./pages/not-found-page";
-import { ProfilePage } from "./pages/profile-page";
+import { PageLoader } from "./components/pageLoader";
+import { AuthenticationGuard } from "./components/auth/authenticationGuard";
+import { AdminPage } from "./pages/adminPage";
+import { CallbackPage } from "./pages/callbackPage";
+import { HomePage } from "./pages/homePage";
+import { NotFoundPage } from "./pages/notFoundPage";
+import { ProfilePage } from "./pages/profilePage";
+import { UnauthorizedPage } from "./pages/unauthorizedPage";
 
 export const App = () => {
   const { isLoading } = useAuth0();
@@ -32,6 +33,7 @@ export const App = () => {
         element={<AuthenticationGuard role="admin" component={AdminPage} />}
       />
       <Route path="/callback" element={<CallbackPage />} />
+      <Route path="/unauthorized" element={<UnauthorizedPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

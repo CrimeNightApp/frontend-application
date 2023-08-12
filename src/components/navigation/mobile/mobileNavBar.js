@@ -1,8 +1,8 @@
 import React from "react";
-import { MobileMenuToggleButton } from "./mobile-menu-toggle-button";
-import { MobileNavBarBrand } from "./mobile-nav-bar-brand";
-import { MobileNavBarButtons } from "./mobile-nav-bar-buttons";
-import { MobileNavBarTabs } from "./mobile-nav-bar-tabs";
+import { MobileMenuToggleButton } from "./mobileMenuToggleButton";
+import { MobileNavBarBrand } from "./mobileNavBarBrand";
+import { MobileNavBarButtons } from "./mobileNavBarButtons";
+import { MobileNavBarTabs } from "./mobileNavBarTabs";
 
 const MobileMenuState = {
   CLOSED: "closed",

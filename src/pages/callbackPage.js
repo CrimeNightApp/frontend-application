@@ -1,6 +1,6 @@
 import React from "react";
-import { NavBar } from "../components/navigation/desktop/nav-bar";
-import { MobileNavBar } from "../components/navigation/mobile/mobile-nav-bar";
+import { NavBar } from "../components/navigation/desktop/navBar";
+import { MobileNavBar } from "../components/navigation/mobile/mobileNavBar";
 
 export const CallbackPage = () => {
   return (

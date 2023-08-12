@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { App } from "./app";
-import { Auth0ProviderWithNavigate } from "./auth/auth0-provider-with-navigate";
+import { Auth0ProviderWithNavigate } from "./auth/auth0ProviderWithNavigate";
 import { ApolloProviderWithAuth0 } from "./graphql/client"; // Import the new component
 import "./styles/styles.css";
 
