@@ -1,29 +1,28 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import { useAuth0 } from '@auth0/auth0-react';
 
 const httpLink = createHttpLink({
   uri: "http://localhost:25080/v1/graphql", // Your Hasura instance
 });
 
 const authLink = setContext((_, { headers }) => {
-  // Retrieve the token from local storage or elsewhere
-  const token = localStorage.getItem('auth0_token');
+  const { getAccessTokenSilently } = useAuth0();
 
-  // If the user has authed, add the Auth header
-  if (token) {
-    return {
-      headers: {
-        ...headers,
-        Authorization: `Bearer ${token}`,
-      },
-    };
-  } else { // Else use the default unauthorized Hasura role (public)
-    return {
-      headers: {
-        ...headers,
-      },
-    };
+  async function fetchSession() {
+    const token = await getAccessTokenSilently();
+    return token;
   }
+  const authLinkWithHeader = fetchSession().then((token) => {
+    return {
+      headers: {
+        ...headers,
+        authorization: token ? `Bearer ${token}` : "",
+      },
+    };
+  });
+
+  return authLinkWithHeader;
 });
 
 const client = new ApolloClient({
