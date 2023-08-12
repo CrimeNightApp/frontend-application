@@ -5,12 +5,12 @@
 import React from "react";
 import { withAuthenticationRequired, useAuth0 } from "@auth0/auth0-react";
 import { PageLoader } from "../pageLoader";
-import { useHasRole } from "./userHasRole"; // Import the custom hook
+import { useHasRole } from "./userHasRole";
 import { Navigate } from "react-router-dom";
 
 export const AuthenticationGuard = ({ component, role }) => {
   const { isAuthenticated } = useAuth0();
-  const hasRole = useHasRole(role); // Always call the custom hook
+  const hasRole = useHasRole(role);
 
   // If the user is not authenticated, render the authentication component
   if (!isAuthenticated) {

@@ -3,24 +3,13 @@ import { CodeSnippet } from "../components/codeSnippet";
 import { PageLayout } from "../components/pageLayout";
 import { useQuery, gql } from "@apollo/client";
 import { useAuth0 } from '@auth0/auth0-react';
-
-const USERS_QUERY = gql`
-  query GetUsers($userId: String!) {
-    users(where: { auth0_id: { _eq: $userId } }) {
-      id
-      auth0_id
-      name
-      created_at
-      last_seen
-    }
-  }
-`;
+import { USER } from "../queries/users";
 
 export const ProfilePage = () => {
   const { user } = useAuth0();
   const userId = user?.sub;
 
-  const { loading, error, data } = useQuery(USERS_QUERY, {
+  const { loading, error, data } = useQuery(USER, {
     variables: { userId },
     skip: !userId // Skip query if userId is not available
   });

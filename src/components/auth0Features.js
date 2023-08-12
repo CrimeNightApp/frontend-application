@@ -1,20 +1,10 @@
 import React from "react";
 import { Auth0Feature } from "./auth0Feature";
-import { useQuery, gql } from "@apollo/client";
-
-const VIDEOS_QUERY = gql`
-  query GetVideos {
-    videos {
-      title
-      video_url
-      thumbnail_url
-      description
-    }
-  }
-`;
+import { useQuery } from "@apollo/client";
+import { ALL_VIDEOS } from "../queries/videos";
 
 export const Auth0Features = () => {
-  const { loading, error, data } = useQuery(VIDEOS_QUERY);
+  const { loading, error, data } = useQuery(ALL_VIDEOS);
   
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
