@@ -29,7 +29,7 @@ export const App = () => {
       />
       <Route
         path="/admin"
-        element={<AuthenticationGuard component={AdminPage} />}
+        element={<AuthenticationGuard role="admin" component={AdminPage} />}
       />
       <Route path="/callback" element={<CallbackPage />} />
       <Route path="*" element={<NotFoundPage />} />

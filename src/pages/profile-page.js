@@ -25,7 +25,7 @@ export const ProfilePage = () => {
     skip: !userId // Skip query if userId is not available
   });
 
-  const userRoles = user['https://hasura.io/jwt/claims']['x-hasura-allowed-roles'] || []; // Access roles directly
+  const userRoles = user['https://hasura.io/jwt/claims']['x-hasura-allowed-roles'] || []; // Get list of roles for the user from Auth0
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
