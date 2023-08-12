@@ -8,7 +8,7 @@ export const ApolloProviderWithAuth0 = ({ children }) => {
   const { isAuthenticated, isLoading, getIdTokenClaims } = useAuth0();
 
   const httpLink = createHttpLink({
-    uri: "http://localhost:25080/v1/graphql", // Your Hasura instance
+    uri: process.env.REACT_APP_GRAPHQL_URL,
   });
 
   // Create the authentication middleware
