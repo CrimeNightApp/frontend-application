@@ -2,8 +2,6 @@
 
 This JavaScript code sample demonstrates how to build a Single-Page Application (SPA) using React, along-side Auth0 for authentication, and Hasura for GraphQL queries.
 
-This JavaScript code sample demonstrates how to build a Single-Page Application (SPA) using React. This React code sample builds the API server using the React Router 6 library.
-
 ## Start the project
 
 Install the project dependencies:

@@ -1,7 +1,7 @@
 import React from "react";
 import { CodeSnippet } from "../components/codeSnippet";
 import { PageLayout } from "../components/pageLayout";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { useAuth0 } from '@auth0/auth0-react';
 import { USER } from "../queries/users";
 
