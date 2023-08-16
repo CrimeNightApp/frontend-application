@@ -1,12 +1,12 @@
-import { gql } from "@apollo/client";
+import { gql } from "@apollo/client"
 
-export const ALL_VIDEOS = gql`
-  query {
-    videos {
+export const FEATURED_VIDEOS = gql`
+  query GetFeaturedVideos {
+    videos(where: {featured: {_eq: true}}) {
       title
-      video_url
       thumbnail_url
-      description
+      video_url
+      duration
     }
   }
 `;

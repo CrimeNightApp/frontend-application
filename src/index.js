@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { App } from "./app";
 import { Auth0ProviderWithNavigate } from "./auth/auth0ProviderWithNavigate";
 import { ApolloProviderWithAuth0 } from "./graphql/client"; // Import the new component
-import "./styles/styles.css";
+import './styles/index.css'
 
 const container = document.getElementById("root");
 const root = createRoot(container);
