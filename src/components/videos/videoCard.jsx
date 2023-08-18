@@ -1,5 +1,6 @@
 import React from "react";
 
+// Function to turn seconds into "Xh XXm"
 function formatDuration(seconds) {
   const date = new Date(seconds * 1000);
   const hours = date.getUTCHours();

@@ -13,6 +13,7 @@ module.exports = {
         'PRIMARY': '#0D0D0D',
         'SECONDARY': '#191919',
         'HIGHLIGHT': '#BCBCBC',
+        'BORDER': '#2C2C2C',
         'ACCENT': '#AC0E0E',
         'TEXT-PRIMARY': '#F6F6F6',
         'TEXT-SECONDARY': '#000000',
