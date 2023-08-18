@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/client";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { CATEGORIES } from "../../queries/categories";
 import { VIDEOS_BY_CATEGORY } from "../../queries/videos";
-import { NavigationButton, CategoryButton } from "../shared/buttons";
+import { NavigationButton, CategoryButton } from "../shared/categoryButtons";
 import { PageLoader } from "../pageLoader";
 import VideoCard from "./videoCard";
 
