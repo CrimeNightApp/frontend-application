@@ -15,7 +15,13 @@ Create a `.env` file based on the `.env.example`
 Start the project:
 
 ```bash
-npm start
+yarn dev
+```
+
+To create a production build and serve the built directory:
+
+```bash
+yarn prod
 ```
 
 ## Resources
